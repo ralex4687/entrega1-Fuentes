@@ -21,7 +21,7 @@ function listaDeSabores(lista) {
 alert("¡Bienvenido a Pizzería René!");
 
 while (opcionMenu !== "0") {
-    opcionMenu = prompt("MENÚ PRINCIPAL:\n1. Pizza\n2. Empanadas\n0. Cerrar y ver total\n\nElija una opción:");
+    opcionMenu = prompt("MENÚ PRINCIPAL 1. - Pizza 2. Empanadas - 0. Cerrar y ver total -- Elija una opción:");
 
     if (opcionMenu === "1") {
         let seleccion = parseInt(prompt(listaDeSabores(saboresPizzas)));
@@ -51,7 +51,7 @@ while (opcionMenu !== "0") {
         }
     
     } else if (opcionMenu === "0") {
-        alert("Resumen de su compra:\nEl total a pagar es: $" + totalPedido);
+        alert("Resumen de su compra: El total a pagar es: $" + totalPedido);
         console.log("Pedido cerrado. Total: $" + totalPedido);
     
     } else {
