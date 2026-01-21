@@ -1,61 +1,52 @@
-const saboresPizzas = ["Muzzarella", "Napolitana", "Jamon y Morron"];
-const saboresEmpanadas = ["Carne", "Pollo", "Verduras"];
 const precioPizza = 8500;
 const precioEmpanada = 2000;
+const saboresPizzas = ["Muzzarella", "Napolitana", "Jamon y Morron"];
+const saboresEmpanadas = ["Carne", "Pollo", "Verduras"];
 
 let totalPedido = 0;
 let opcionMenu = "";
 
-function calcularPrecio(cantidad, precio) {
-    return cantidad * precio;
-}
-
-function listaDeSabores(lista) {
-    let menu = "Seleccione el número del sabor:\n";
-    for (let i = 0; i < lista.length; i++) {
-        menu = menu + (i + 1) + ". " + lista[i] + "\n";
-    }
-    return menu;
+function calcularTotal(cant, precioUnico) {
+    let resultado = cant * precioUnico;
+    return resultado;
 }
 
 alert("¡Bienvenido a Pizzería René!");
 
-while (opcionMenu !== "0") {
-    opcionMenu = prompt("MENÚ PRINCIPAL 1. - Pizza 2. Empanadas - 0. Cerrar y ver total -- Elija una opción:");
 
-    if (opcionMenu === "1") {
-        let seleccion = parseInt(prompt(listaDeSabores(saboresPizzas)));
-        if (seleccion >= 1 && seleccion <= saboresPizzas.length) {
-            let cantidad = parseInt(prompt("¿Cuántas pizzas de " + saboresPizzas[seleccion - 1] + " desea?"));
-            
-            if (cantidad > 0) {
-                totalPedido = totalPedido + calcularPrecio(cantidad, precioPizza);
-                alert("Agregado al pedido.");
-            }
-        } else {
-            alert("Error: El número de sabor no existe.");
-        }
+while (opcionMenu != "0") {
+    opcionMenu = prompt("1. Pizza 2. Empanadas 0. Salir");
 
-    } else if (opcionMenu === "2") {
-        let seleccion = parseInt(prompt(listaDeSabores(saboresEmpanadas)));
+    if (opcionMenu == "1") {
+        let seleccion = prompt("Sabores: 1. " + saboresPizzas[0] + "2. " + saboresPizzas[1] + "3. " + saboresPizzas[2]);
         
-        if (seleccion >= 1 && seleccion <= saboresEmpanadas.length) {
-            let cantidad = parseInt(prompt("¿Cuántas empanadas de " + saboresEmpanadas[seleccion - 1] + " desea?"));
+        if (seleccion == "1" || seleccion == "2" || seleccion == "3") {
+            let cantidad = parseInt(prompt("¿Cuántas unidades desea?"));
             
             if (cantidad > 0) {
-                totalPedido = totalPedido + calcularPrecio(cantidad, precioEmpanada);
-                alert("Agregado al pedido.");
+                totalPedido = totalPedido + calcularTotal(cantidad, precioPizza);
+                alert("Pizza agregada.");
             }
         } else {
-            alert("Error: El número de sabor no existe.");
+            alert("Sabor no válido");
         }
-    
-    } else if (opcionMenu === "0") {
-        alert("Resumen de su compra: El total a pagar es: $" + totalPedido);
-        console.log("Pedido cerrado. Total: $" + totalPedido);
-    
-    } else {
-        alert("Opción no válida.");
-    
+
+    } else if (opcionMenu == "2") {
+       
+        let seleccion = prompt("Sabores: 1. " + saboresEmpanadas[0] + "2. " + saboresEmpanadas[1] + "3. " + saboresEmpanadas[2]);
+
+        if (seleccion == "1" || seleccion == "2" || seleccion == "3") {
+            let cantidad = parseInt(prompt("¿Cuántas unidades desea?"));
+            
+            if (cantidad > 0) {
+                totalPedido = totalPedido + calcularTotal(cantidad, precioEmpanada);
+                alert("Empanadas agregadas.");
+            }
+        } else {
+            alert("Sabor no válido");
+        }
+
+    } else if (opcionMenu == "0") {
+        alert("El total es: $" + totalPedido);
     }
 }
