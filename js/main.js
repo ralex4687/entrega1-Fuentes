@@ -16,10 +16,8 @@ alert("¡Bienvenido a Pizzería René!");
 
 while (opcionMenu != "0") {
     opcionMenu = prompt("1. Pizza 2. Empanadas 0. Salir");
-
     if (opcionMenu == "1") {
         let seleccion = prompt("Sabores: 1. " + saboresPizzas[0] + "2. " + saboresPizzas[1] + "3. " + saboresPizzas[2]);
-        
         if (seleccion == "1" || seleccion == "2" || seleccion == "3") {
             let cantidad = parseInt(prompt("¿Cuántas unidades desea?"));
             
