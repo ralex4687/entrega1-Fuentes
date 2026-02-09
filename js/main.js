@@ -1,51 +1,68 @@
+const productos = [
+    { 
+        id: 1,
+        nombre:"Muzzarella",
+        precio: 12500 
+    }, 
 
-const precioPizza = 8500;
-const precioEmpanada = 2000;
-const saboresPizzas = ["Muzzarella", "Napolitana", "Jamon y Morron"];
-const saboresEmpanadas = ["Carne", "Pollo", "Verduras"];
+    { 
+        id: 2,
+        nombre:"Napolitana",
+        precio: 12500 
+    }, 
+    { 
+        id: 3,
+        nombre:"Cuatro quesos",
+        precio: 12500 
+    }, 
 
-let totalPedido = 0;
-let opcionMenu = "";
+    { 
+        id: 4,
+        nombre:"Jamon y morron",
+        precio: 12500 
+    }, 
 
-function calcularTotal(cant, precioUnico) {
-    let resultado = cant * precioUnico;
-    return resultado;
+    { 
+        id: 5,
+        nombre:"Jamon y queso",
+        precio: 12500 
+    }, 
+    { 
+        id: 6,
+        nombre:"Capresse",
+        precio: 12500 
+    },
+    { 
+        id: 7,
+        nombre:"Calabaza y queso",
+        precio: 12500 
+    }, 
+    { 
+        id: 8,
+        nombre:"Panceta y ciruela",
+        precio: 12500 
+    },  
+];
+
+let productContainer = document.getElementById("product-container")
+
+function renderProductos(productsArray) {
+    productsArray.forEach(producto => {
+        const card = document.createElement("div")
+        card.innerHTML = `<h3>${producto.nombre}</h3>
+                          <h4>$${producto.precio}</h4>
+                          <button class="productoAgregar" id="${producto.id}">Agregar</button>`;
+        productContainer.appendChild(card);
+        
+    });
+
 }
 
-alert("¡Bienvenido a Pizzería René!");
+renderProductos(productos);
 
 
-while (opcionMenu != "0") {
-    opcionMenu = prompt("1. Pizza 2. Empanadas 0. Salir");
-    if (opcionMenu == "1") {
-        let seleccion = prompt("Sabores: 1. " + saboresPizzas[0] + "2. " + saboresPizzas[1] + "3. " + saboresPizzas[2]);
-        if (seleccion == "1" || seleccion == "2" || seleccion == "3") {
-            let cantidad = parseInt(prompt("¿Cuántas unidades desea?"));
-            
-            if (cantidad > 0) {
-                totalPedido = totalPedido + calcularTotal(cantidad, precioPizza);
-                alert("Pizza agregada.");
-            }
-        } else {
-            alert("Sabor no válido");
-        }
 
-    } else if (opcionMenu == "2") {
-       
-        let seleccion = prompt("Sabores: 1. " + saboresEmpanadas[0] + "2. " + saboresEmpanadas[1] + "3. " + saboresEmpanadas[2]);
 
-        if (seleccion == "1" || seleccion == "2" || seleccion == "3") {
-            let cantidad = parseInt(prompt("¿Cuántas unidades desea?"));
-            
-            if (cantidad > 0) {
-                totalPedido = totalPedido + calcularTotal(cantidad, precioEmpanada);
-                alert("Empanadas agregadas.");
-            }
-        } else {
-            alert("Sabor no válido");
-        }
 
-    } else if (opcionMenu == "0") {
-        alert("El total es: $" + totalPedido);
-    }
-}
+
+
