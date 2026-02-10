@@ -2,7 +2,7 @@ const productos = [
     { 
         id: 1,
         nombre:"Muzzarella",
-        precio: 12500 
+        precio: 11500 
     }, 
 
     { 
@@ -13,38 +13,38 @@ const productos = [
     { 
         id: 3,
         nombre:"Cuatro quesos",
-        precio: 12500 
+        precio: 14500 
     }, 
 
     { 
         id: 4,
         nombre:"Jamon y morron",
-        precio: 12500 
+        precio: 13500 
     }, 
 
     { 
         id: 5,
         nombre:"Jamon y queso",
-        precio: 12500 
+        precio: 2500 
     }, 
     { 
         id: 6,
         nombre:"Capresse",
-        precio: 12500 
+        precio: 2500 
     },
     { 
         id: 7,
         nombre:"Calabaza y queso",
-        precio: 12500 
+        precio: 2500 
     }, 
     { 
         id: 8,
         nombre:"Panceta y ciruela",
-        precio: 12500 
+        precio: 2500 
     },  
 ];
 
-let cartProducts = []
+let cartProducts = JSON.parse(localStorage.getItem("cartProducts")) || [];
 
 let productContainer = document.getElementById("product-container")
 
@@ -61,10 +61,12 @@ function renderProductos(productsArray) {
 }
 
 renderProductos(productos);
+agregarAlCarrito();
 
 
 function agregarAlCarrito () {
-    addButton = document.querySelectorAll(".productoAgregar")
+    const addButton = document.querySelectorAll(".productoAgregar");
+    
     addButton.forEach(button => {
         button.onclick = (e) => {
             const productId = e.currentTarget.id
