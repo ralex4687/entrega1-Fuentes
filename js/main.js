@@ -44,6 +44,8 @@ const productos = [
     },  
 ];
 
+let cartProducts = []
+
 let productContainer = document.getElementById("product-container")
 
 function renderProductos(productsArray) {
@@ -59,6 +61,21 @@ function renderProductos(productsArray) {
 }
 
 renderProductos(productos);
+
+
+function agregarAlCarrito () {
+    addButton = document.querySelectorAll(".productoAgregar")
+    addButton.forEach(button => {
+        button.onclick = (e) => {
+            const productId = e.currentTarget.id
+            const selectedProduct = productos.find(producto => producto.id == productId)
+            cartProducts.push(selectedProduct)
+
+            localStorage.setItem("cartProducts", JSON.stringify(cartProducts))
+        }
+
+    })
+} 
 
 
 
