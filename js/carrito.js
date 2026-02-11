@@ -48,7 +48,11 @@ function calcularTotal(cartItems) {
 
     const totalElemento = document.getElementById("total-carrito");
     if (totalElemento) {
-        totalElemento.innerText = `Total: $${total}`;
+        const linkWA = "https://wa.me/5491100000000?text=Hola!%20Quiero%20hacer%20un%20pedido";
+        totalElemento.innerHTML = `
+            Total: $${total} 
+            <a href="${linkWA}" class="btn-wa">Hacer pedido</a>
+        `;
     }
 
 
