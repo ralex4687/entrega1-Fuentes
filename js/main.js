@@ -1,46 +1,31 @@
 const productos = [
     { 
-        id: 1,
-        nombre:"Muzzarella",
-        precio: 11500 
+        id: 1, nombre:"Pizza Muzzarella", precio: 11500 
     }, 
 
     { 
-        id: 2,
-        nombre:"Napolitana",
-        precio: 12500 
+        id: 2, nombre:"Pizza Napolitana", precio: 12500 
     }, 
+    
     { 
-        id: 3,
-        nombre:"Cuatro quesos",
-        precio: 14500 
+        id: 3,nombre:"Pizza Cuatro quesos", precio: 14500 
     }, 
 
     { 
-        id: 4,
-        nombre:"Jamon y morron",
-        precio: 13500 
+        id: 4, nombre:"Pizza Jamon y morron", precio: 13500 
     }, 
 
     { 
-        id: 5,
-        nombre:"Jamon y queso",
-        precio: 2500 
+        id: 5, nombre:"Empanada de Jamon y queso", precio: 2500 
     }, 
     { 
-        id: 6,
-        nombre:"Capresse",
-        precio: 2500 
+        id: 6, nombre:"Empanada de Capresse", precio: 2500 
     },
     { 
-        id: 7,
-        nombre:"Calabaza y queso",
-        precio: 2500 
+        id: 7, nombre:"Empanada de Calabaza y queso", precio: 2500 
     }, 
     { 
-        id: 8,
-        nombre:"Panceta y ciruela",
-        precio: 2500 
+        id: 8, nombre:"Empanada Panceta y ciruela", precio: 2500 
     },  
 ];
 
@@ -69,11 +54,29 @@ function agregarAlCarrito () {
     
     addButton.forEach(button => {
         button.onclick = (e) => {
-            cartProducts = JSON.parse(localStorage.getItem("cartProducts"))
+            cartProducts = JSON.parse(localStorage.getItem("cartProducts"))|| [];
+            const productId = e.currentTarget.id;
 
-            const productId = e.currentTarget.id
-            const selectedProduct = productos.find(producto => producto.id == productId);
-            cartProducts.push(selectedProduct);
+            const productoExistente = cartProducts.find(p => p.id == productId);
+
+            if (productoExistente) {
+                productoExistente.cantidad = productoExistente.cantidad + 1;
+            }
+            else {
+                const seleccionado = productos.find(p => p.id == productId);
+
+                const productoNuevo = {
+                    id: seleccionado.id,
+                    nombre: seleccionado.nombre,
+                    precio: seleccionado.precio,
+                    cantidad: 1
+                };
+                  
+                cartProducts.push(productoNuevo);
+ 
+            };
+
+          
 
             localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
         };

@@ -9,9 +9,9 @@ function renderCarrito (cartItems){
     cartItems.forEach(producto => {
         const card = document.createElement("div")
         card.innerHTML = `<h3>${producto.nombre}</h3>
-                          <h4>$${producto.precio}</h4>
-                          <button class ="botonEliminar">Eliminar</button>
-                          `;
+                          <p>Cantidad: ${producto.cantidad}</p>
+                          <h4>Precio: $${producto.precio}</h4>
+                          <button class ="botonEliminar" id="${producto.id}">Eliminar</button>`;
 
         cartSection.appendChild(card);
 
@@ -43,10 +43,14 @@ function calcularTotal(cartItems) {
     let total = 0;
 
     cartItems.forEach(producto => {
-        total += producto.precio;
+        total = total + (producto.precio * producto.cantidad);
     });
 
-    document.getElementById("total-carrito").innerText = `Total: $${total}`;
+    const totalElemento = document.getElementById("total-carrito");
+    if (totalElemento) {
+        totalElemento.innerText = `Total: $${total}`;
+    }
+
 
 }
 
