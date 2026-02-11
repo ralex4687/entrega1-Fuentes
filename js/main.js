@@ -69,15 +69,17 @@ function agregarAlCarrito () {
     
     addButton.forEach(button => {
         button.onclick = (e) => {
+            cartProducts = JSON.parse(localStorage.getItem("cartProducts"))
+
             const productId = e.currentTarget.id
-            const selectedProduct = productos.find(producto => producto.id == productId)
-            cartProducts.push(selectedProduct)
+            const selectedProduct = productos.find(producto => producto.id == productId);
+            cartProducts.push(selectedProduct);
 
-            localStorage.setItem("cartProducts", JSON.stringify(cartProducts))
-        }
+            localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
+        };
 
-    })
-} 
+    });
+};
 
 
 

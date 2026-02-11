@@ -32,7 +32,7 @@ function eliminarDelCarrito(idProducto){
     );
 
     localStorage.setItem(
-        "cartproducts",
+        "cartProducts",
         JSON.stringify(cartProducts)
     );
 
