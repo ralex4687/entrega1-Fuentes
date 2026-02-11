@@ -1,0 +1,14 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100vh;
+}
+
+body {
+    background: linear-gradient(#99b898, #fecea8, #ff847c, #2a363b);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color:#ffffff;
+    padding: 20px;
+}
