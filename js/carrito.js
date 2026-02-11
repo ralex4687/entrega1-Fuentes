@@ -6,6 +6,11 @@ let cartSection = document.getElementById("cart-section")
 function renderCarrito (cartItems){
     cartSection.innerHTML = "";
 
+    if(cartItems.length === 0){
+        cartSection.innerHTML = "<h2>No has seleccionado ninguna producto</h2>"
+    }
+
+
     cartItems.forEach(producto => {
         const card = document.createElement("div")
         card.innerHTML = `<h3>${producto.nombre}</h3>
