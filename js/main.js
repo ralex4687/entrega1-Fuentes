@@ -1,31 +1,31 @@
 const productos = [
     { 
-        id: 1, nombre:"Pizza Muzzarella", precio: 11500 
+        id: 1, nombre:"Pizza Muzzarella", precio: 11500, cantidad: 1
     }, 
 
     { 
-        id: 2, nombre:"Pizza Napolitana", precio: 12500 
+        id: 2, nombre:"Pizza Napolitana", precio: 12500, cantidad: 1
     }, 
     
     { 
-        id: 3,nombre:"Pizza Cuatro quesos", precio: 14500 
+        id: 3,nombre:"Pizza Cuatro quesos", precio: 14500, cantidad: 1
     }, 
 
     { 
-        id: 4, nombre:"Pizza Jamon y morron", precio: 13500 
+        id: 4, nombre:"Pizza Jamon y morron", precio: 13500, cantidad: 1
     }, 
 
     { 
-        id: 5, nombre:"Empanada de Jamon y queso", precio: 2500 
+        id: 5, nombre:"Empanada de Jamon y queso", precio: 2500, cantidad: 1 
     }, 
     { 
-        id: 6, nombre:"Empanada de Capresse", precio: 2500 
+        id: 6, nombre:"Empanada de Capresse", precio: 2500, cantidad: 1 
     },
     { 
-        id: 7, nombre:"Empanada de Calabaza y queso", precio: 2500 
+        id: 7, nombre:"Empanada de Calabaza y queso", precio: 2500, cantidad: 1
     }, 
     { 
-        id: 8, nombre:"Empanada Panceta y ciruela", precio: 2500 
+        id: 8, nombre:"Empanada Panceta y ciruela", precio: 2500, cantidad: 1 
     },  
 ];
 
