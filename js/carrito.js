@@ -14,9 +14,13 @@ function renderCarrito (cartItems){
     cartItems.forEach(producto => {
         const card = document.createElement("div")
         card.innerHTML = `<h3>${producto.nombre}</h3>
-                          <p>Cantidad: ${producto.cantidad}</p>
                           <h4>Precio: $${producto.precio}</h4>
-                          <button class ="botonEliminar" id="${producto.id}">Eliminar</button>`;
+                          <div>
+                          <button class="restar">-</button>
+                          <span>${producto.cantidad}</span>
+                          <button class="sumar">+</button>
+                          </div>`;
+                                              
 
         cartSection.appendChild(card);
 
