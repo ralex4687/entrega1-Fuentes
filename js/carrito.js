@@ -42,19 +42,21 @@ function renderCarrito (cartItems){
 }
 
 function calcularTotal(cartItems) {
-    let total = 0;
-
-    cartItems.forEach(producto => {
-        total = total + (producto.precio * producto.cantidad);
-    });
+    const total = cartItems.reduce((acumulador, producto) => {
+        return acumulador + (producto.precio * producto.cantidad);
+    }, 0);
 
     const totalElemento = document.getElementById("total-carrito");
-    if (totalElemento) {
-        const linkWA = "https://wa.me/5491100000000?text=Hola!%20Quiero%20hacer%20un%20pedido";
+    
+    if (cartItems.length === 0) {
+        totalElemento.innerHTML = '<p>Total: $0</p>';
+    } else {
         totalElemento.innerHTML = `
-            Total: $${total} 
-            <a href="${linkWA}" class="btn-wa">Hacer pedido</a>
+            <p>Total: $${total}</p>
+            <button id="finalizar-compra">Finalizar Compra</button>
         `;
+
+        document.getElementById("finalizar-compra").onclick = mostrarRecibo;
     }
 
 
