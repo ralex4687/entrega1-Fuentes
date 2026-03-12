@@ -79,6 +79,7 @@ function agregarAlCarrito () {
                     nombre: seleccionado.nombre,
                     precio: seleccionado.precio,
                     cantidad: cantidadElegida
+                };
                   
                 cartProducts.push(productoNuevo);
  
