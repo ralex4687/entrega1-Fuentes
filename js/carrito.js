@@ -14,7 +14,7 @@ function renderCarrito (cartItems){
     }
 
 
-    cartItems.forEach(producto => {
+    cartItems.forEach((producto, index) => {
         const card = document.createElement("div")
         card.innerHTML = `<h3>${producto.nombre}</h3>
                           <h4>Precio: $${producto.precio}</h4>
@@ -22,7 +22,8 @@ function renderCarrito (cartItems){
                           <button class="restar">-</button>
                           <span>${producto.cantidad}</span>
                           <button class="sumar">+</button>
-                          </div>`;
+                          </div>
+                          <p>Subtotal: $${producto.precio * producto.cantidad}</p>`;
                                               
 
         cartSection.appendChild(card);
@@ -30,9 +31,19 @@ function renderCarrito (cartItems){
         const btnSumar = card.querySelector(".sumar");
         const btnRestar = card.querySelector(".restar");
 
-        btnSumar.onclick = () => {}
+        btnSumar.onclick = () => {
+            producto.cantidad++;
+            actualizarCarrito();
+        }
 
-
+        btnRestar.onclick = () => {
+            if (producto.cantidad > 1) {
+                producto.cantidad--;
+            } else {
+                cartProducts.splice(index, 1);
+            }
+            actualizarCarrito();
+        }
 
   
         
@@ -53,14 +64,48 @@ function calcularTotal(cartItems) {
     } else {
         totalElemento.innerHTML = `
             <p>Total: $${total}</p>
+            <button id="vaciar-carrito">Vaciar Carrito</button>
             <button id="finalizar-compra">Finalizar Compra</button>
         `;
 
-        document.getElementById("finalizar-compra").onclick = mostrarRecibo;
-    }
+        document.getElementById("vaciar-carrito").onclick = () => {
+            cartProducts = [];
+            actualizarCarrito();
+        };
 
+        document.getElementById("finalizar-compra").onclick = mostrarRecibo;
+    };
 
 }
 
-renderCarrito(cartProducts);
+function actualizarCarrito() {
+    localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
+    renderCarrito(cartProducts);
+}
 
+function mostrarRecibo(totalFinal) {
+    let detalleCompra = "Resumen de tu Compra:\n\n";
+
+    cartProducts.forEach(producto => {
+        detalleCompra += `${producto.nombre} - Cantidad: ${producto.cantidad} - Subtotal: $${producto.precio * producto.cantidad}\n`;
+    });
+}
+
+
+Swal.fire({
+  title: "Desea confirmar su compra?",
+  text: "No podrás revertir esto!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#99b898",
+  cancelButtonColor: "#ff847c",
+  confirmButtonText: "Sí, confirmar"
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire({
+      title: "¡Compra Realizada!",
+      text: "Gracias por tu compra.",
+      icon: "success"
+    });
+  }
+});

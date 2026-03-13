@@ -26,7 +26,7 @@ function renderProductos(productsArray) {
                             <span class="cantidad">1</span>
                             <button class="sumar">+</button>
                           </div> 
-                          <button class="productoAgregar" id="${producto.id}">Agregar a la compra</button>`;
+                          <button class="productoAgregar" id="${producto.id}">Agregar al carrito</button>`;
         productContainer.appendChild(card);
 
 
