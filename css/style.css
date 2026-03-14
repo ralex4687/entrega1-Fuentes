@@ -35,8 +35,8 @@ body {
 }
 
 .logo-img {
-    height: 50px;
-    width: 50px;
+    height: 70px;
+    width: 70px;
     object-fit: cover;
     border-radius: 50%;
     border: 2px solid #fecea8;
@@ -73,19 +73,18 @@ body {
 }
 
 #product-container div, #cart-section div {
-    background-color: rgba(255, 255, 255, 0.799);
-    color: #333;
+    background-color: whitesmoke;
     border-radius: 15px;
-    padding: 0;
     width: 280px;
     text-align: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    min-height: 250px;
+    overflow: hidden;
+    padding: 0;
+    min-height: auto;
 }
+
 #product-container div:hover, #cart-section div:hover {
     transform: translateY(-5px);
 }
@@ -99,17 +98,17 @@ body {
 }
 
 .cantidad-container {
-    display: flex;
-    flex-direction: row;
+    display: flex !important;
+    flex-direction: row !important;
     align-items: center;
     justify-content: center;
     gap: 15px;
-    padding: 10px;
+    padding: 8px;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    margin: 15px auto;
+    margin: 10px auto;
     border-radius: 10px;
-    width: 90%;
+    width: 140px;
     box-sizing: border-box;
 }
 
@@ -223,8 +222,8 @@ a:hover {
     width: 100%;
     height: 180px;
     overflow: hidden;
-    border-radius: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 0;
+    flex-shrink: 0;
 }
 
 .img-wrapper img {
@@ -234,5 +233,14 @@ a:hover {
 }
 
 .card-body {
-    padding: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+    justify-content: flex-start;
+}
+
+.card-body h3, .card-body h4 {
+    margin: 5px 0;
 }
